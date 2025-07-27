@@ -1,6 +1,6 @@
 export const menuMain = [
     {
-        name: "Inicio",
+        name: "Início",
         url: "/",
         highlighted: false,
     },
@@ -11,12 +11,12 @@ export const menuMain = [
     },
     {
         name: "Cardápio",
-        url: "/cardapio",
+        url: "/gallery",
         highlighted: false,
     },
     {
         name: "Contato",
-        url: "/contato",
+        url: "/contact",
         highlighted: false,
     }
 ];

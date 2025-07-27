@@ -2,90 +2,24 @@
 import Layout from "~/layouts/Layout.astro";
 import Section from "~/components/Section.astro";
 import Hero from "~/components/Hero.astro";
-import { Picture } from "astro:assets";
-import Badge from "~/components/Badge.astro";
-import ButtonCallUs from "~/components/ButtonCallUs.astro";
-import Article from "~/components/Article.astro";
-
-// Images
-import LogoSite from "~/assets/images/logo-site.png";
-
 ---
 
-<Layout>
-	<Section class:list={"bg-white"}>
-		<Hero>
-			<div slot="hero-content-left" class="prose max-w-none max-lg:order-1">
-				<Badge title="il ristorante italiana" />
-				<h1 class="text-5xl font-black leading-tight text-brand-red">Recanto e Sabor</h1>
-
-				<p>
-					Viva uma explosão de sabores no Recanto e Sabor! Nosso
-					buffet por quilo oferece uma variedade deliciosa todos os
-					dias: peixes frescos, frango à parmegiana, massas, saladas,
-					carnes, acompanhamentos e muito mais. Aqui você encontra
-					comida caseira, feita com carinho, qualidade e muito sabor.
-					Perfeito para quem busca uma refeição completa, saborosa e
-					inesquecível!
-				</p>
-
-				<span class="bg-white font-medium">✔ We also deliver</span>
-
-				<div class="mt-8 flex items-center gap-x-8">
-					<ButtonCallUs />
-				</div>
-			</div>
-			<div slot="hero-content-right">
-				<Picture
-					class:list={"mx-auto"}
-					src={LogoSite}
-					height={600}
-					formats={["avif", "webp"]}
-					alt="A description of my image."
-					loading={"eager"}
-					fetchpriority={"high"}
-				/>
-			</div>
-		</Hero>
-	</Section>
-
-	<Section class:list={'bg-white'}>
-		<Article>
-			<h2>Welcome to recantoesabor</h2>
-			<p>
-				Nestled in the heart of the city, <strong>recantoesabor</strong> offers an authentic Italian dining experience
-				like no other. From the moment you step through our doors, you'll be transported to the vibrant streets of
-				Italy, where good food and great company are at the center of life.
-			</p>
-
-			<h3>Our Story</h3>
-			<p>
-				Founded in <em>1998</em>, our family-owned restaurant has always been a labor of love. Inspired by the
-				recipes passed down through generations, we bring the <u>rich culinary heritage</u> of Italy to your plate.
-				Every dish tells a story, and every meal is a celebration of flavor.
-			</p>
-
-			<h3>Our Philosophy</h3>
-			<blockquote>"The secret ingredient is always love."</blockquote>
-			<p>
-				At recantoesabor, we believe in the simple joy of fresh ingredients, time-honored techniques, and a
-				passion for creating memorable meals. From our hand-rolled pasta to our wood-fired pizzas, every bite is
-				crafted with care.
-			</p>
-
-			<h4>What Makes Us Special?</h4>
-			<ul>
-				<li><strong>Authenticity:</strong> Traditional recipes, just like Nonna used to make.</li>
-				<li><strong>Fresh Ingredients:</strong> Locally sourced produce and imported Italian staples.</li>
-				<li><strong>Warm Atmosphere:</strong> A place where everyone feels like family.</li>
-			</ul>
-
-			<h3>Join Us</h3>
-			<p>
-				Whether you're celebrating a special occasion or simply indulging in the pleasures of Italian cuisine, <strong
-					>recantoesabor</strong
-				> is the perfect destination. <em>Come for the food, stay for the memories.</em>
-			</p>
-		</Article>
-	</Section>
+<Layout title="Sobre nós" pageTitle="Sobre o Recanto e Sabor">
+  <Section class:list="bg-white py-20">
+    <Hero>
+      <div slot="hero-content-left" class="max-w-2xl mx-auto text-center flex flex-col gap-6">
+        <h1 class="text-4xl font-bold text-brand-red">Sobre o Recanto e Sabor</h1>
+        <p class="text-lg text-gray-700">
+          Fundado com amor em Balneário Camboriú, o <strong>Recanto e Sabor</strong> oferece uma experiência de almoço com sabor caseiro de verdade. 
+          Trabalhamos com buffet livre, por quilo e marmitas para viagem — tudo com qualidade, variedade e preço justo.
+        </p>
+        <p class="text-lg text-gray-700">
+          Nosso compromisso é fazer você se sentir em casa, servindo refeições preparadas com ingredientes frescos e um toque de carinho em cada prato.
+        </p>
+        <p class="text-lg text-gray-700">
+          Se você busca uma refeição rápida, saborosa e feita com atenção, venha nos visitar e descubra por que somos referência na região.
+        </p>
+      </div>
+    </Hero>
+  </Section>
 </Layout>
