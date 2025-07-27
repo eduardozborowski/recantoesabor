@@ -1,0 +1,27 @@
+[
+	{
+		"id": 1,
+		"author": "Milton Araujo",
+		"review": "Pessoal muito gente boa! Atmosfera boa e excelente atendimento!"
+	},
+	{
+		"id": 2,
+		"author": "Yamuna Siqueira",
+		"review": "Restaurante caseiro muito bom! Sempre depois de estudar eu almoço e gosto muito!"
+	},
+	{
+		"id": 3,
+		"author": "Alexandre Sommer",
+		"review": "Excelente comida, nunca tive que reclamar de nada!"
+	},
+	{
+		"id": 4,
+		"author": "Neiva Terezinha",
+		"review": "Eu recomendo pra todo mundo, é muito bommm!!! Melhor bife a parmegiana de Balneario Camboriu!"
+	},
+	{
+		"id": 5,
+		"author": "Hianna Landarin",
+		"review": "Em BC não tem restaurante igual a esse! Melhor que muitos caros por aí, preço em conta!"
+	}
+]

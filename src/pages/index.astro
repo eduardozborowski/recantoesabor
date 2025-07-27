@@ -1,0 +1,202 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Hero from "~/components/Hero.astro";
+import { Picture } from "astro:assets";
+import Badge from "~/components/Badge.astro";
+import Grid from "~/components/Grid.astro";
+import Heading from "~/components/Heading.astro";
+import ReviewSlider from "~/components/ReviewSlider.astro";
+
+// Images
+import LogoSite from "~/assets/images/logo-site.png";
+import Pizza from "~/assets/images/pizza.png";
+import Spaghetti from "~/assets/images/spaghetti.png";
+import Fish from "~/assets/images/fish.png";
+import reviewAuthors from "~/assets/images/review-authors.png";
+---
+
+<Layout title="Home" pageTitle="Home" description="Welcome to our restaurant!">
+	<Section class:list={"bg-gradient-to-r from-[#9D1D12] to-[#6e110a] text-white py-12"}>
+		<Hero>
+			<div
+				slot="hero-content-left"
+				class="prose max-w-none max-lg:order-1"
+			>
+				<h2 class="font-black text-5xl mb-0">Restaurante</h2>
+				<h3 class="font-bold text-3xl mt-0">Recanto e Sabor</h3>
+
+				<p>
+					Viva uma explosão de sabores no Recanto e Sabor! Nosso
+					buffet por quilo oferece uma variedade deliciosa todos os
+					dias: peixes frescos, frango à parmegiana, massas, saladas,
+					carnes, acompanhamentos e muito mais. Aqui você encontra
+					comida caseira, feita com carinho, qualidade e muito sabor.
+					Perfeito para quem busca uma refeição completa, saborosa e
+					inesquecível!
+				</p>
+
+				<span class="text-brand-green font-medium"
+					>✔ We also deliver</span
+				>
+			</div>
+			<div slot="hero-content-right">
+				<Picture
+					class:list={"mx-auto"}
+					src={LogoSite}
+					height={650}
+					formats={["avif", "webp"]}
+					alt="A description of my image."
+					loading={"eager"}
+					fetchpriority={"high"}
+				/>
+			</div>
+		</Hero>
+	</Section>
+
+	<div class="w-full mt-12 mb-4">
+		<iframe
+			class="w-full h-[450px]"
+			src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14219.290219692311!2d-48.638795344580096!3d-27.0041624!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d8b7dfefaa9311%3A0x3294e807011a3a25!2sRestaurante%20Recanto%20e%20Sabor!5e0!3m2!1spt-BR!2sbr!4v1753577448846!5m2!1spt-BR!2sbr"
+			style="border:0;"
+			allowfullscreen=""
+			loading="lazy"
+			referrerpolicy="no-referrer-when-downgrade"></iframe>
+	</div>
+
+	<Section class:list={"bg-white pt-2"}>
+		<div class="container pt-4">
+			<Heading>
+				<h2 slot="heading-title" class="font-black text-brand-green h2">
+					Nosso buffet!
+				</h2>
+				<p slot="heading-content">
+					Explora e dê uma olhada em nosso buffet delicioso!
+				</p>
+			</Heading>
+
+			<Grid>
+				<div slot="grid-content-1">
+					<div class="flex flex-col items-center prose text-center">
+						<Picture
+							class:list={"not-prose w-full h-auto"}
+							src={Pizza}
+							formats={["avif", "webp"]}
+							alt="A description of my image."
+						/>
+						<h3 class="h4 mt-0 font-black">
+							Pasta &amp; Spaghetti
+						</h3>
+						<p>
+							Pasta is a staple of Italian cuisine, with a rich
+							history dating back centuries. It comes in various
+							shapes and sizes, each suited to different sauces
+							and preparations.
+						</p>
+					</div>
+				</div>
+
+				<div slot="grid-content-2">
+					<div class="flex flex-col items-center prose text-center">
+						<Picture
+							class:list={"not-prose w-full h-auto"}
+							src={Spaghetti}
+							formats={["avif", "webp"]}
+							alt="A description of my image."
+						/>
+						<h3 class="h4 mt-0 font-black">
+							Pasta &amp; Spaghetti
+						</h3>
+						<p>
+							Pasta is a staple of Italian cuisine, with a rich
+							history dating back centuries. It comes in various
+							shapes and sizes, each suited to different sauces
+							and preparations.
+						</p>
+					</div>
+				</div>
+
+				<div slot="grid-content-3">
+					<div class="flex flex-col items-center prose text-center">
+						<Picture
+							class:list={"not-prose w-full h-auto"}
+							src={Fish}
+							formats={["avif", "webp"]}
+							alt="A description of my image."
+						/>
+						<h3 class="h4 mt-0 font-black">
+							Pasta &amp; Spaghetti
+						</h3>
+						<p>
+							Pasta is a staple of Italian cuisine, with a rich
+							history dating back centuries. It comes in various
+							shapes and sizes, each suited to different sauces
+							and preparations.
+						</p>
+					</div>
+				</div>
+			</Grid>
+		</div>
+
+		<!-- Reviews -->
+		<Section class:list={"bg-brand-red/20 relative"}>
+			<div class="py-16">
+				<Hero>
+					<div
+						slot="hero-content-left"
+						class="prose max-w-none order-2"
+					>
+						<div class="text-center not-prose">
+							<Badge color="white" title="reviews" />
+						</div>
+						<h2
+							slot="heading-title"
+							class="font-black h4 text-center mt-0 mb-4"
+						>
+							O que nossos clientes dizem...
+						</h2>
+						<div slot="heading-content">
+							<p class="text-center">
+								Veja um pouco do que nossos clientes dizem sobre
+								almoçar no nosso saboroso restaurante!
+							</p>
+
+							<ReviewSlider />
+						</div>
+					</div>
+
+					<div slot="hero-content-right">
+						<Picture
+							src={reviewAuthors}
+							alt="Review authors"
+							class="w-full h-auto"
+						/>
+					</div>
+				</Hero>
+			</div>
+
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 1440 320"
+				class="absolute h-40 w-full top-0 inset-x-0 rotate-180"
+				preserveAspectRatio="none"
+				><path
+					fill="#ffffff"
+					fill-opacity="1"
+					d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+				></path>
+			</svg>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 1440 320"
+				class="absolute h-40 w-full bottom-0 inset-x-0"
+				preserveAspectRatio="none"
+				><path
+					fill="#ffffff"
+					fill-opacity="1"
+					d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+				></path>
+			</svg>
+		</Section>
+	</Section>
+</Layout>
