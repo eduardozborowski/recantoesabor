@@ -1,27 +1,22 @@
 export const menuMain = [
     {
-        name: "Home",
+        name: "Inicio",
         url: "/",
         highlighted: false,
     },
     {
-        name: "Menu",
-        url: "/menu",
-        highlighted: false,
-    },
-    {
-        name: "About Us",
+        name: "Sobre Nós",
         url: "/about-us",
         highlighted: false,
     },
     {
-        name: "Gallery",
-        url: "/gallery",
+        name: "Cardápio",
+        url: "/cardapio",
         highlighted: false,
     },
     {
-        name: "Contact",
-        url: "/contact",
+        name: "Contato",
+        url: "/contato",
         highlighted: false,
     }
 ];
@@ -31,15 +26,6 @@ export const footerPrimary = [
         title: "Navigatie",
         items: [
             { name: "home", url: "/" },
-        ],
-    },
-];
-
-export const footerSecondary = [
-    {
-        title: "support",
-        items: [
-            { name: "pricing", url: "/pricing" },
         ],
     },
 ];

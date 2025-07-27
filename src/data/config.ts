@@ -1,8 +1,8 @@
 // Global variables
-export const siteLang = "en-US";
-export const siteCurrency = "USD";
+export const siteLang = "pt-BR";
+export const siteCurrency = "BRL";
 export const siteDomain = "recantoesabor.com";
-export const siteName = "recantoesabor";
+export const siteName = "Recanto e Sabor";
 export const siteSlogan = "The best pies in the galaxy!";
 export const themeColor = "#FF0000";
 
