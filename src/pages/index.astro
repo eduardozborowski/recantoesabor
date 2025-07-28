@@ -21,14 +21,11 @@ import reviewAuthors from "~/assets/images/review-authors.png";
 	pageTitle="Recanto e Sabor"
 	description="Welcome to our restaurant!"
 >
-<!-- HERO / INTRO ------------------------------------------------------>
 <Section
   class:list={
-    /* bg um pouco mais escuro + padding extra p/ a onda não encostar no menu */
     "bg-brand-red/25 pt-20 md:pt-28 pb-10 text-white relative overflow-hidden"
   }
 >
-  <!-- Onda superior (rotacionada) -->
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 1440 320"
@@ -55,61 +52,61 @@ import reviewAuthors from "~/assets/images/review-authors.png";
   </svg>
 
   <Hero>
-    <!-- ESQUERDA ------------------------------------------------------->
     <div
       slot="hero-content-left"
       class="max-lg:order-1 flex flex-col gap-6"
     >
       <!-- Título -->
-      <h2
-        class="text-white drop-shadow-sm text-5xl font-extrabold leading-tight"
-      >
-        Restaurante<br />
-        Recanto&nbsp;<span class="text-brand-yellow">&amp;</span>&nbsp;Sabor
-      </h2>
+	  <h3
+	  class="text-white drop-shadow-sm text-5xl font-extrabold leading-tight"
+	>
+	  Restaurante<br />
+	  Recanto <span class="text-brand-yellow">&amp;</span> Sabor
+	</h3>
 
-      <!-- Informações‑chave (quebram em linhas quando falta largura) -->
-      <div
-        class="flex flex-wrap gap-x-6 gap-y-2 items-center text-lg text-white/90"
-      >
-        <span class="flex items-center">
-          <span class="mr-2">⏰</span>
-          <strong>Seg – Sáb • 11h – 15h</strong>
-        </span>
-
-        <span class="flex items-center">
-          <span class="mr-2">🥗</span>
-          Buffet livre&nbsp;
-        </span>
-
-        <span class="flex items-center">
-          <span class="mr-2">⚖️</span>
-          Por quilo&nbsp;
-        </span>
-
-        <span class="flex items-center">
-          <span class="mr-2">📦</span>
-          Marmitas para levar
-        </span>
-      </div>
+<div class="flex flex-col gap-2 items-start text-lg text-white/90">
+	<span class="flex items-center">
+	  <span class="mr-2">⏰</span>
+	  <strong>Seg – Sáb • 11h – 15h</strong>
+	</span>
+  
+	<span class="flex items-center">
+	  <span class="mr-2">🥗</span>
+	  Buffet livre
+	</span>
+  
+	<span class="flex items-center">
+	  <span class="mr-2">⚖️</span>
+	  Por quilo
+	</span>
+  
+	<span class="flex items-center">
+	  <span class="mr-2">📦</span>
+	  Marmitas para levar
+	</span>
+  </div>
+  
 
       <!-- Descrição -->
       <p class="max-w-lg text-lg md:text-xl lg:text-2xl leading-relaxed">
         Peixes frescos, frango à&nbsp;parmegiana, massas al&nbsp;dente,
         saladas crocantes, carnes suculentas e acompanhamentos caseiros —
         tudo preparado com carinho e preço justo para um almoço inesquecível.
-		Estamos sempre improvisando e fazendo comidas novas e diferentes de
+		Estamos sempre fazendo comidas novas e diferentes de
 		todo o Brasil diretamente para o nosso querido Balneário Camboriú!
 
       </p>
 
       <!-- CTA -->
-      <a
-        href="#mapa"
-        class="inline-block rounded-full bg-brand-yellow px-6 py-2 font-semibold text-brand-red transition hover:bg-brand-yellow/80 focus:ring-2 focus:ring-brand-yellow/50"
-      >
-        Ver como chegar
-      </a>
+	  <a
+	  href="https://maps.app.goo.gl/x8buf6jM9ykKqDeY9"
+	  target="_blank"
+	  rel="noopener noreferrer"
+	  class="inline-block text-lg px-8 py-3 mt-6 rounded-full bg-brand-yellow text-brand-red font-bold shadow-md transition hover:bg-yellow-400 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-brand-yellow/50"
+	>
+	  📍 Ver como chegar
+	</a>
+	
     </div>
 
     <!-- DIREITA (foto) ------------------------------------------------->
@@ -148,7 +145,7 @@ import reviewAuthors from "~/assets/images/review-authors.png";
 					Nosso buffet!
 				</h2>
 				<p slot="heading-content">
-					Explora e dê uma olhada em nosso buffet delicioso!
+					Explore e dê uma olhada em nosso buffet delicioso!
 				</p>
 			</Heading>
 
@@ -161,10 +158,10 @@ import reviewAuthors from "~/assets/images/review-authors.png";
 							formats={["avif", "webp"]}
 							alt="Logo do restaurante Recanto e Sabor em Balneário Camboriú"
 						/>
-						<h3 class="h4 mt-0 font-black">Buffet Variado</h3>
+						<h3 class="h4 mt-0 font-black">Buffet Caseiro</h3>
 						<p>
-							Legumes cozidos, purê de batata, arroz soltinho,
-							batata frita crocante e nuggets. Ideal para quem
+							Quatro tipos de carnes, lasanha, legumes gratinados, purê de batata, arroz soltinho,
+							batata frita crocante e mais! Ideal para quem
 							quer uma refeição balanceada e saborosa.
 						</p>
 					</div>
