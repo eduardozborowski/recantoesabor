@@ -1,27 +1,20 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
-import alpinejs from "@astrojs/alpinejs";
-import playformInline from "@playform/inline";
-import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://www.recantoesabor.com",
-	base: "/",
-	// trailingSlash: 'always',
 	integrations: [
-		alpinejs(),
-		playformInline({
-			Beasties: true,
+		sitemap({
+			filter: (page) => new URL(page).pathname.replace(/\/$/, "") !== "/menu",
 		}),
-		mdx(),
 	],
+	redirects: {
+		"/menu": "/gallery",
+	},
 	output: "static",
 	devToolbar: {
 		enabled: false,
-	},
-	vite: {
-		plugins: [tailwindcss()],
 	},
 });

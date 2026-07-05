@@ -1,0 +1,16 @@
+{
+  "name": "Restaurante Recanto e Sabor",
+  "short_name": "Recanto e Sabor",
+  "description": "Buffet caseiro em Balneário Camboriú",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdf8",
+  "theme_color": "#b5262d",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

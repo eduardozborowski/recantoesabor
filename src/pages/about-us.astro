@@ -1,25 +1,32 @@
 ---
+import { Picture } from "astro:assets";
 import Layout from "~/layouts/Layout.astro";
-import Section from "~/components/Section.astro";
-import Hero from "~/components/Hero.astro";
+import Salao from "~/assets/images/comida3.jpg";
 ---
 
-<Layout title="Sobre nós" pageTitle="Sobre o Recanto e Sabor">
-  <Section class:list="bg-white py-20">
-    <Hero>
-      <div slot="hero-content-left" class="max-w-2xl mx-auto text-center flex flex-col gap-6">
-        <h1 class="text-4xl font-bold text-brand-red">Sobre o Recanto e Sabor</h1>
-        <p class="text-lg text-gray-700">
-          Fundado com amor em Balneário Camboriú, o <strong>Recanto e Sabor</strong> oferece uma experiência de almoço com sabor caseiro de verdade. 
-          Trabalhamos com buffet livre, por quilo e marmitas para viagem — tudo com qualidade, variedade e preço justo.
-        </p>
-        <p class="text-lg text-gray-700">
-          Nosso compromisso é fazer você se sentir em casa, servindo refeições preparadas com ingredientes frescos e um toque de carinho em cada prato.
-        </p>
-        <p class="text-lg text-gray-700">
-          Se você busca uma refeição rápida, saborosa e feita com atenção, venha nos visitar e descubra por que somos referência na região.
-        </p>
-      </div>
-    </Hero>
-  </Section>
+<Layout title="Sobre o Recanto e Sabor | Restaurante em Balneário Camboriú" description="Conheça o Recanto e Sabor, restaurante de comida caseira com buffet livre, por quilo e marmitas no Centro de Balneário Camboriú.">
+	<header class="page-hero">
+		<div class="site-container" data-reveal>
+			<p class="eyebrow">Nossa cozinha, nosso jeito</p>
+			<h1>Um restaurante feito para você se sentir em casa.</h1>
+			<p>Comida brasileira, variedade e acolhimento no almoço de quem vive ou passeia por Balneário Camboriú.</p>
+		</div>
+	</header>
+
+	<section class="content-section">
+		<div class="site-container about-grid">
+			<Picture class="about-image" src={Salao} alt="Salão e buffet do Restaurante Recanto e Sabor" widths={[600, 900, 1200]} sizes="(max-width: 900px) 100vw, 52vw" formats={["avif", "webp"]} data-reveal />
+			<div class="about-copy" data-reveal>
+				<p class="eyebrow">Recanto e Sabor</p>
+				<h2>Comida feita com cuidado, todos os dias.</h2>
+				<p>O Recanto e Sabor nasceu em Balneário Camboriú com uma proposta simples: servir um almoço saboroso, variado e com preço justo.</p>
+				<p>Nosso buffet reúne receitas caseiras, carnes, massas, legumes, saladas e acompanhamentos. Você pode aproveitar o buffet livre, montar o prato por quilo ou levar uma marmita.</p>
+				<p>Mais do que servir uma refeição, queremos ser aquela escolha confiável para a rotina: ambiente acolhedor, atendimento próximo e sabor que dá vontade de voltar.</p>
+				<div class="hero-actions">
+					<a class="button-primary" href="/gallery">Conheça nosso buffet</a>
+					<a class="button-secondary" href="/contact">Fale conosco</a>
+				</div>
+			</div>
+		</div>
+	</section>
 </Layout>

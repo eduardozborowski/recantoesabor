@@ -1,151 +1,74 @@
 ---
-import { menuMain } from "~/data/menus.js";
-import LogoHeader from "~/assets/images/logo-header.png";
+import { Image } from "astro:assets";
+import Logo from "~/assets/images/logo-header.png";
+import { menuMain } from "~/data/menus";
+import { address, hours } from "~/data/config";
 
-const rmTrailingSlash = (p: string) =>
-	p.endsWith("/") && p.length > 1 ? p.slice(0, -1) : p;
-
-const pathname = rmTrailingSlash(Astro.url.pathname);
+const normalizePath = (path: string) => path !== "/" ? path.replace(/\/$/, "") : path;
+const pathname = normalizePath(Astro.url.pathname);
 ---
 
-<style>
-	/* underline animado ------------------------------------------------------ */
-	.link-underline::after {
-		@apply block h-[2px] mx-auto w-full scale-x-0 origin-center
-			 transition-transform duration-300;
-	}
-	.link-underline:hover::after,
-	.link-underline-active::after {
-		@apply scale-x-100;
-	}
-	/* foco teclado visível --------------------------------------------------- */
-	.link-underline:focus-visible {
-		@apply outline-2;
-	}
-</style>
+<div class="topline">
+	<div class="site-container topline-inner">
+		<p>
+			<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+			{address.street}, {address.district} · {address.city}
+		</p>
+		<p class="topline-hours">{hours.short}</p>
+	</div>
+</div>
 
-<header
-	x-data="{ open: false }"
-	@keydown.window.escape="open = false"
-	style={`background-image:url(${LogoHeader.src});`}
-	class="relative isolate z-30 flex items-center bg-center bg-cover h-48 md:h-56 lg:h-64"
->
-	<!-- GRADIENT overlay -->
-	<div
-		class="absolute inset-0 -z-10 bg-gradient-to-b from-black/40 via-black/20 to-black/0"
-	>
+<header class="site-header">
+	<div class="site-container nav-shell">
+		<a href="/" class="brand" aria-label="Recanto e Sabor, página inicial">
+			<Image src={Logo} alt="Recanto e Sabor" width={210} height={72} loading="eager" />
+		</a>
+
+		<nav class="desktop-nav" aria-label="Navegação principal">
+			{menuMain.map((item) => (
+				<a href={item.url} class:list={["nav-link", { active: pathname === item.url }]} aria-current={pathname === item.url ? "page" : undefined}>
+					{item.name}
+				</a>
+			))}
+			<a class="nav-cta" href="https://maps.app.goo.gl/x8buf6jM9ykKqDeY9" target="_blank" rel="noopener noreferrer">Como chegar</a>
+		</nav>
+
+		<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+			<span class="sr-only">Abrir menu</span>
+			<svg class="menu-open-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+			<svg class="menu-close-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+		</button>
 	</div>
 
-	<!-- NAV BAR -->
-	<div class="container mx-auto px-4 w-full relative z-10 pt-75">
-		<nav class="flex items-center justify-center" aria-label="Global">
-			<span class="sr-only">Recanto e Sabor</span>
-
-			<!-- BOTÃO HAMBURGER -->
-			<div class="flex lg:hidden">
-				<button
-					type="button"
-					class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-black"
-					@click="open = true"
-				>
-					<span class="sr-only">Abrir menu principal</span>
-					<svg
-						class="size-8"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="1.5"
-						stroke="currentColor"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-						></path>
-					</svg>
-				</button>
-			</div>
-
-			<!-- LINKS DESKTOP -->
-			<div class="hidden lg:flex lg:items-center gap-x-8 md:gap-x-12">
-				{
-					menuMain.map((item) => (
-						<a
-							href={item.url}
-							class={`link-underline uppercase tracking-wide transition text-lg lg:text-xl font-semibold text-black hover:text-brand-green
-                ${item.highlighted ? "menu-item-highlighted" : ""}
-                ${pathname === item.url ? "link-underline-active" : ""}`}
-						>
-							{item.name}
-						</a>
-					))
-				}
-			</div>
+	<div id="mobile-menu" class="mobile-menu" hidden>
+		<nav class="site-container" aria-label="Navegação móvel">
+			{menuMain.map((item) => (
+				<a href={item.url} class:list={["mobile-link", { active: pathname === item.url }]}>
+					{item.name}
+				</a>
+			))}
+			<a class="nav-cta" href="https://maps.app.goo.gl/x8buf6jM9ykKqDeY9" target="_blank" rel="noopener noreferrer">Traçar rota</a>
 		</nav>
 	</div>
-
-	<!-- MENU MOBILE -->
-	<div
-		class="lg:hidden"
-		x-ref="dialog"
-		x-show="open"
-		x-cloak
-		aria-modal="true"
-	>
-		<div
-			class="fixed inset-0 z-50 w-full overflow-y-auto bg-white/80 px-8 py-6"
-			x-show="open"
-			x-transition:enter="transition ease-out"
-			x-transition:enter-start="opacity-0"
-			x-transition:enter-end="opacity-100"
-			x-transition:leave="transition ease-in"
-			x-transition:leave-start="opacity-100"
-			x-transition:leave-end="opacity-0"
-			x-cloak
-		>
-			<div class="flex items-center justify-between">
-				<a href="/" class="-m-1.5 p-1.5">
-					
-				</a>
-				<button
-					type="button"
-					class="-m-2.5 p-2.5 text-brand-red"
-					@click="open = false"
-				>
-					<span class="sr-only">Close menu</span>
-					<svg
-						class="size-8"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="2"
-						stroke="currentColor"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M6 18 18 6M6 6l12 12"></path>
-					</svg>
-				</button>
-			</div>
-
-			<div class="mt-6 flow-root">
-				<div class="-my-6 divide-y divide-gray-500/10">
-					<div class="space-y-2 py-6 mt-16">
-						{
-							menuMain.map((item) => (
-								<a
-									@click="open = false"
-									href={item.url}
-									class={`block py-2 text-center font-semibold text-3xl
-                    ${item.highlighted ? "menu-item-highlighted w-max mx-auto !px-8 !py-2" : ""}
-                    ${pathname === item.url ? "link-underline-active" : ""}`}
-								>
-									{item.name}
-								</a>
-							))
-						}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 </header>
+
+<script>
+	const header = document.querySelector<HTMLElement>(".site-header");
+	const button = header?.querySelector<HTMLButtonElement>(".menu-toggle");
+	const menu = header?.querySelector<HTMLElement>("#mobile-menu");
+
+	if (header && button && menu) {
+		const setOpen = (open: boolean) => {
+			button.setAttribute("aria-expanded", String(open));
+			menu.hidden = !open;
+			header.classList.toggle("menu-is-open", open);
+		};
+
+		button.addEventListener("click", () => setOpen(button.getAttribute("aria-expanded") !== "true"));
+		menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setOpen(false)));
+		document.addEventListener("keydown", (event) => event.key === "Escape" && setOpen(false));
+		document.addEventListener("click", (event) => {
+			if (!header.contains(event.target as Node)) setOpen(false);
+		});
+	}
+</script>

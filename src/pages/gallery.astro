@@ -1,51 +1,48 @@
 ---
-import Layout from "~/layouts/Layout.astro";
-import Section from "~/components/Section.astro";
-import Heading from "~/components/Heading.astro";
 import { Picture } from "astro:assets";
-import { getCollection } from "astro:content";
+import Layout from "~/layouts/Layout.astro";
+import Buffet from "~/assets/images/comida1.jpg";
+import Calabresa from "~/assets/images/comida2.jpg";
+import Salao from "~/assets/images/comida3.jpg";
+import Bife from "~/assets/images/comida4.jpg";
+import Fachada from "~/assets/images/logo-site.jpg";
 
-const gallery = await getCollection("gallery");
+const gallery = [
+	{ image: Salao, alt: "Salão e buffet de pratos quentes do Recanto e Sabor" },
+	{ image: Buffet, alt: "Buffet caseiro com legumes, arroz e acompanhamentos" },
+	{ image: Bife, alt: "Bife ao molho servido no buffet do restaurante" },
+	{ image: Fachada, alt: "Fachada do Restaurante Recanto e Sabor em Balneário Camboriú" },
+	{ image: Calabresa, alt: "Linguiça assada com cebola no buffet" },
+];
 ---
 
-<Layout>
-	<Section class:list={"[&>.container]:pb-0"}>
-		<Heading>
-			<h1 slot="heading-title" class="font-black text-brand-green h2">Cardápio</h1>
-			<p slot="heading-content">
-				Conheça nosso restaurante e nossa gastronomia através da nossa galeria. Prometemos uma experiência culinária memorável.
-			</p>
-		</Heading>
-	</Section>
-	<div class="masonry-grid grid grid-cols-2 lg:grid-cols-3 pb-16 lg:pb-32">
-		{
-			gallery.map((item, index) => (
-				<div class="masonry-grid-item">
-					<a href={item.data.image.src} class="glightbox">
-						<Picture
-							src={item.data.image}
-							alt={item.data.alt}
-							class="h-full w-full object-cover object-center"
-							loading={index < 3 ? "eager" : "lazy"}
-                            fetchpriority={index < 3 ? "high" : "auto"}
-						/>
+<Layout title="Buffet e fotos | Recanto e Sabor Balneário Camboriú" description="Veja fotos do buffet caseiro, pratos e ambiente do Restaurante Recanto e Sabor no Centro de Balneário Camboriú.">
+	<header class="page-hero">
+		<div class="site-container" data-reveal>
+			<p class="eyebrow">Nosso buffet</p>
+			<h1>Comida bonita é comida feita com cuidado.</h1>
+			<p>A variedade muda ao longo dos dias. Estas fotos mostram um pouco dos sabores e do ambiente que você encontra por aqui.</p>
+		</div>
+	</header>
+
+	<section class="content-section">
+		<div class="site-container gallery-grid">
+			{gallery.map((item, index) => (
+				<figure class="gallery-item" data-reveal>
+					<a class="glightbox" href={item.image.src} data-gallery="recanto" aria-label={`Ampliar foto: ${item.alt}`}>
+						<Picture src={item.image} alt={item.alt} widths={[500, 800, 1200]} sizes="(max-width: 600px) 100vw, 66vw" formats={["avif", "webp"]} loading={index < 2 ? "eager" : "lazy"} />
 					</a>
-				</div>
-			))
-		}
-	</div>
+				</figure>
+			))}
+		</div>
+		<div class="site-container hero-actions" data-reveal>
+			<a class="button-primary" href="https://maps.app.goo.gl/x8buf6jM9ykKqDeY9" target="_blank" rel="noopener noreferrer">Venha almoçar</a>
+		</div>
+	</section>
 </Layout>
 
 <script>
 	import GLightbox from "glightbox";
-	import "../../node_modules/glightbox/dist/css/glightbox.min.css";
-
-	document.addEventListener("astro:page-load", () => {
-		const lightbox = GLightbox({
-			touchNavigation: true,
-			autoplayVideos: true,
-			loop: true,
-			draggable: true,
-		});
-	});
+	import "glightbox/dist/css/glightbox.min.css";
+	GLightbox({ selector: ".glightbox", touchNavigation: true, loop: true });
 </script>

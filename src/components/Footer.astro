@@ -1,49 +1,49 @@
 ---
 import { menuMain } from "~/data/menus";
+import { address, hours, phone, siteName, socialMedia } from "~/data/config";
 const currentYear = new Date().getFullYear();
-import { siteName } from "~/data/config";
 ---
 
-<footer style="background-color: #C12329;" class="text-white">
-	<div class="container pt-16 pb-8">
-		<p
-			class="text-center font-bold text-4xl bg-white bg-clip-text text-transparent"
-		>
-			Recanto e Sabor
-		</p>
-		<nav
-			class="flex flex-col sm:flex-row items-center justify-center gap-x-12 gap-y-3 font-medium mt-6"
-			aria-label="Footer"
-		>
-			{
-				menuMain.map((item) => (
-					<a href={item.url} class="hover:underline">
-						{item.name}
-					</a>
-				))
-			}
-		</nav>
-
-		<div class="flex justify-center items-center gap-8 mt-5">
-			<a href="https://api.whatsapp.com/send?phone=555581451993" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-				<img src="https://cdn.positus.global/production/resources/robbu/whatsapp-button/whatsapp-icon.svg" alt="WhatsApp" class="h-10 w-10" />
-			</a>
-			<a href="https://www.instagram.com/recantoesaborbc" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-				<img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram" class="h-10 w-10 invert" />
-			</a>
-			<a href="https://www.facebook.com/615789438553506" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-				<img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/facebook.svg" alt="Facebook" class="h-10 w-10 invert" />
-			</a>
+<footer class="site-footer">
+	<div class="site-container footer-grid">
+		<div>
+			<a class="footer-brand" href="/">Recanto <span>&amp;</span> Sabor</a>
+			<p class="footer-intro">Comida caseira, variedade e preço justo para quem vive ou passeia por Balneário Camboriú.</p>
+			<div class="social-links">
+				<a href={socialMedia.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram do Recanto e Sabor">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg>
+				</a>
+				<a href={socialMedia.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook do Recanto e Sabor">
+					<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4.2c-.5-.1-1.8-.2-3.4-.2C10.4 4 8 6 8 9.7V13H4v4h4v7h5v-7h3.5l.5-4h-4V10c0-1.2.3-2 1-2Z"/></svg>
+				</a>
+			</div>
 		</div>
-		
 
+		<div>
+			<h2>Visite</h2>
+			<address>
+				{address.street}, {address.district}<br />
+				{address.city} – {address.state}<br />
+				CEP {address.zip}
+			</address>
+			<a class="footer-link" href={address.mapUrl} target="_blank" rel="noopener noreferrer">Abrir no mapa ↗</a>
+		</div>
 
-		<p class="mt-10 text-center text-sm">
-			&copy; {currentYear}
-			{siteName}. Todos os direitos reservados.
-			<a class="underline ml-1" href="/privacy-policy"
-				>Política de privacidade</a
-			>
-		</p>
+		<div>
+			<h2>Horário</h2>
+			<p>{hours.short}</p>
+			<p class="footer-note">Buffet livre, por quilo e marmitas para levar.</p>
+			<a class="footer-link" href={phone.whatsapp} target="_blank" rel="noopener noreferrer">{phone.label}</a>
+		</div>
+
+		<nav aria-label="Links do rodapé">
+			<h2>Explore</h2>
+			{menuMain.map((item) => <a class="footer-link footer-nav-link" href={item.url}>{item.name}</a>)}
+		</nav>
+	</div>
+
+	<div class="site-container footer-bottom">
+		<p>&copy; {currentYear} {siteName}.</p>
+		<a href="/privacy-policy">Política de privacidade</a>
 	</div>
 </footer>

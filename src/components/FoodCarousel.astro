@@ -1,0 +1,58 @@
+---
+import { Picture } from "astro:assets";
+import Buffet from "~/assets/images/comida1.jpg";
+import Calabresa from "~/assets/images/comida2.jpg";
+import Salao from "~/assets/images/comida3.jpg";
+import Bife from "~/assets/images/comida4.jpg";
+
+const items = [
+	{ image: Buffet, kicker: "Todo dia", title: "Buffet caseiro variado", alt: "Buffet do Recanto e Sabor com pratos quentes, legumes e acompanhamentos" },
+	{ image: Calabresa, kicker: "Bem servido", title: "Carnes e acompanhamentos", alt: "Linguiça assada servida no buffet do Recanto e Sabor" },
+	{ image: Bife, kicker: "Tempero da casa", title: "Pratos preparados com cuidado", alt: "Bife ao molho com cheiro-verde no buffet do restaurante" },
+	{ image: Salao, kicker: "No Centro de BC", title: "Um almoço simples e acolhedor", alt: "Salão e balcão de buffet do Restaurante Recanto e Sabor" },
+];
+---
+
+<div class="swiper food-slider" aria-label="Fotos do buffet do Recanto e Sabor">
+	<div class="swiper-wrapper">
+		{items.map((item) => (
+			<div class="swiper-slide food-slide">
+				<article class="food-card">
+					<Picture src={item.image} alt={item.alt} widths={[500, 800]} sizes="(max-width: 600px) 78vw, 470px" formats={["avif", "webp"]} />
+					<div class="food-overlay">
+						<p>{item.kicker}</p>
+						<h3>{item.title}</h3>
+					</div>
+				</article>
+			</div>
+		))}
+	</div>
+</div>
+
+<script>
+	import Swiper from "swiper";
+	import { A11y, Autoplay, Keyboard, Navigation } from "swiper/modules";
+	import "swiper/css";
+
+	const element = document.querySelector<HTMLElement>(".food-slider");
+	if (element) {
+		const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		new Swiper(element, {
+			modules: [A11y, Autoplay, Keyboard, Navigation],
+			slidesPerView: "auto",
+			spaceBetween: 16,
+			grabCursor: true,
+			keyboard: { enabled: true },
+			navigation: { nextEl: ".food-next", prevEl: ".food-prev" },
+			autoplay: reducedMotion ? false : { delay: 4200, disableOnInteraction: false, pauseOnMouseEnter: true },
+			a11y: {
+				enabled: true,
+				prevSlideMessage: "Foto anterior",
+				nextSlideMessage: "Próxima foto",
+				firstSlideMessage: "Esta é a primeira foto",
+				lastSlideMessage: "Esta é a última foto",
+			},
+			breakpoints: { 768: { spaceBetween: 24 } },
+		});
+	}
+</script>

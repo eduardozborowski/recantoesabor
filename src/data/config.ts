@@ -1,58 +1,32 @@
-// Global variables
 export const siteLang = "pt-BR";
-export const siteCurrency = "BRL";
-export const siteDomain = "recantoesabor.com";
-export const siteName = "Recanto e Sabor";
-export const siteSlogan = "The best pies in the galaxy!";
-export const themeColor = "#FF0000";
+export const siteUrl = "https://www.recantoesabor.com";
+export const siteName = "Restaurante Recanto e Sabor";
+export const themeColor = "#b5262d";
 
 export const phone = {
-	href: "tel:+123456789",
-	label: "(123) 456-789",
-};
-
-export const email = {
-	href: "mailto:info@recantoesabor.com",
-	label: "info@recantoesabor.com",
+	e164: "+5547981451993",
+	href: "tel:+5547981451993",
+	whatsapp:
+		"https://wa.me/5547981451993?text=Ol%C3%A1%21%20Vim%20pelo%20site%20do%20Recanto%20e%20Sabor.",
+	label: "(47) 98145-1993",
 };
 
 export const address = {
-	street: "1234 Space Street",
-	city: "Galaxy City",
-	zip: "12345",
-	state: "Milky Way",
-	country: "Space",
+	street: "Rua 3700, 281, sala 02",
+	district: "Centro",
+	city: "Balneário Camboriú",
+	zip: "88330-203",
+	state: "SC",
+	country: "BR",
+	mapUrl: "https://maps.app.goo.gl/x8buf6jM9ykKqDeY9",
 };
 
 export const socialMedia = {
-	facebook: {
-		url: "https://facebook.com",
-		label: "Facebook",
-		icon: "facebook",
-	},
-	twitter: {
-		url: "https://twitter.com",
-		label: "Twitter",
-		icon: "twitter",
-	},
-	instagram: {
-		url: "https://instagram.com",
-		label: "Instagram",
-		icon: "instagram",
-	},
-	youtube: {
-		url: "https://youtube.com",
-		label: "YouTube",
-		icon: "youtube",
-	},
+	instagram: "https://www.instagram.com/recantoesaborbc",
+	facebook:
+		"https://www.facebook.com/people/Restaurante-Recanto-e-Sabor/61578943853506/",
 };
 
 export const hours = {
-	monday: "9:00 - 17:00",
-	tuesday: "9:00 - 17:00",
-	wednesday: "9:00 - 17:00",
-	thursday: "9:00 - 17:00",
-	friday: "9:00 - 17:00",
-	saturday: "9:00 - 17:00",
-	sunday: "Closed",
+	short: "Segunda a sábado, das 11h às 15h",
 };

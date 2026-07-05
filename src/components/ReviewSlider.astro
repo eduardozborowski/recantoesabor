@@ -1,47 +1,41 @@
 ---
 import { getCollection } from "astro:content";
-const allReviews = await getCollection("reviews");
+const reviews = await getCollection("reviews");
 ---
 
-<div class="swiper w-full mt-8 bg-white rounded-lg">
-	<div class="swiper-wrapper h-auto w-auto pt-8 pb-12">
-		{
-			allReviews.map((review) => (
-				<div class="swiper-slide cursor-pointer select-none">
-					<div class="px-4 lg:px-8">
-						<blockquote class="border-none">
-							<p class="text-center font-medium text-2xl text-balance">{review.data.review}</p>
-							<footer class="text-center mt-4">
-								— <cite>{review.data.author}</cite>
-							</footer>
-						</blockquote>
-					</div>
-				</div>
-			))
-		}
+<div class="swiper review-slider" aria-label="Depoimentos de clientes">
+	<div class="swiper-wrapper">
+		{reviews.map((review) => (
+			<div class="swiper-slide">
+				<article class="review-card">
+					<div class="review-stars">Depoimento</div>
+					<blockquote>“{review.data.review}”</blockquote>
+					<cite>{review.data.author}</cite>
+				</article>
+			</div>
+		))}
 	</div>
-	<div class="swiper-pagination"></div>
+	<div class="swiper-pagination review-pagination"></div>
 </div>
 
 <script>
 	import Swiper from "swiper";
-	import { Pagination, Autoplay } from "swiper/modules";
+	import { A11y, Autoplay, Pagination } from "swiper/modules";
 	import "swiper/css";
 	import "swiper/css/pagination";
 
-	document.addEventListener("astro:page-load", () => {
-		const swiper = document.querySelector(".swiper") as HTMLElement;
-		new Swiper(swiper, {
-			modules: [Pagination, Autoplay],
+	const element = document.querySelector<HTMLElement>(".review-slider");
+	if (element) {
+		const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+		new Swiper(element, {
+			modules: [A11y, Autoplay, Pagination],
 			loop: true,
 			slidesPerView: 1,
-			spaceBetween: 32,
-			autoplay: {
-				delay: 2500,
-			},
-			pagination: {
-				el: ".swiper-pagination",
-			},
+			spaceBetween: 16,
+			autoplay: reducedMotion ? false : { delay: 5000, disableOnInteraction: false, pauseOnMouseEnter: true },
+			a11y: { enabled: true, paginationBulletMessage: "Ir para o depoimento {{index}}" },
+			pagination: { el: ".review-pagination", clickable: true },
+			breakpoints: { 800: { slidesPerView: 2, spaceBetween: 24 } },
 		});
-	});
+	}
 </script>
