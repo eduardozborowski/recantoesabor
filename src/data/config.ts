@@ -1,5 +1,5 @@
 export const siteLang = "pt-BR";
-export const siteUrl = "https://www.recantoesabor.com";
+export const siteUrl = "https://recantoesabor.com";
 export const siteName = "Restaurante Recanto e Sabor";
 export const themeColor = "#b5262d";
 

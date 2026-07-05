@@ -214,7 +214,7 @@ O JSON-LD usa o tipo `Restaurant` e descreve nome, telefone, endereço, cozinha,
 User-agent: *
 Allow: /
 
-Sitemap: https://www.recantoesabor.com/sitemap-index.xml
+Sitemap: https://recantoesabor.com/sitemap-index.xml
 ```
 
 Recursos de `/_astro/`, CSS e imagens permanecem rastreáveis para permitir a renderização completa pelos indexadores.
@@ -231,7 +231,7 @@ O sitemap não publica `priority` ou `changefreq`. Também não publica `lastmod
 
 Os arquivos em `/_astro/` possuem hash no nome e são adequados a cache longo. HTML, `robots.txt` e sitemap não possuem hash e representam documentos atualizáveis.
 
-O domínio canônico configurado é `https://www.recantoesabor.com`. A regra `/menu` → `/gallery` existe no build do Astro; quando a hospedagem oferece redirects nativos, a mesma regra pode ser promovida para HTTP 301 sem alterar o código das páginas.
+O domínio canônico configurado é `https://recantoesabor.com`. A hospedagem redireciona a variante com `www` para esse domínio. A regra `/menu` → `/gallery` existe no build do Astro; quando a hospedagem oferece redirects nativos, a mesma regra pode ser promovida para HTTP 301 sem alterar o código das páginas.
 
 ## Modernizações aplicadas
 
